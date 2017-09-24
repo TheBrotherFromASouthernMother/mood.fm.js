@@ -5,7 +5,6 @@ const render = require('./render.js');
 const router = require('./router.js');
 
 
-
 const hostname = '127.0.0.1';
 const port = 3000;
 
@@ -15,12 +14,11 @@ const server = http.createServer((request, response) => {
     const {method, url, headers} = request;
     module.exports.res = res;
     router.homeRoute(request, response);
-    request.on('data', () => {
+
     /*  console.log(method);
       console.log(url);
       console.log(headers);
       */
-    });
     router.cityRoute(request, response)
 
  });

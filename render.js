@@ -8,6 +8,7 @@ function view(template, response = app.res) {
  let fileContents = fs.readFileSync(`./${template}.html`, {encoding: "utf8"});
   //write out to the response
     response.write(fileContents);
+
 }
 
 module.exports.view = view;

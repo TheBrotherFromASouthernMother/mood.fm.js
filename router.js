@@ -11,6 +11,8 @@ function homeRoute(request, response) {
 
 
 function cityRoute(request, response) {
+
+  //let page = request.url.replace('/', weather.weatherID);
   let cityQuery = "";
 
   request.on('data', data => {

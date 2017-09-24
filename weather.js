@@ -1,3 +1,4 @@
+
 //imports the http module
 const http = require('http');
 
@@ -41,7 +42,6 @@ function GetWeather (city = "Houston") {
               })
      }) //end request
 
-} //end function GetWeather
-
+}; //end function GetWeather
 
 module.exports.GetWeather = GetWeather;
