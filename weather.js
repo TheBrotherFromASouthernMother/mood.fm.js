@@ -1,4 +1,4 @@
-
+const EventEmitter = require("events");
 //imports the http module
 const http = require('http');
 
@@ -10,9 +10,11 @@ const app = require('./app.js');
 const render = require('./render.js');
 
 let weatherID = "10";
-
+const weatherEmitter = new EventEmitter.EventEmitter();
 //Main function
 function GetWeather (city = "Houston") {
+
+
 
   const request = http.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key.apikey}`,(response) => {
             let body = "";
@@ -20,6 +22,7 @@ function GetWeather (city = "Houston") {
 
             response.on("data", (data) => {
               body += data;
+              weatherEmitter.emit("data", data);
             })
 
             response.on("error", () => {
@@ -31,17 +34,13 @@ function GetWeather (city = "Houston") {
                body = body.toString()
                par = JSON.parse(body)
                weatherID = par.weather[0].id;
-
-            /*   if (weatherID > 100) {
-              render.view('Rain');
-            } else {
-              render.view('Snow')
-            } */
+              weatherEmitter.emit('end');
               console.log(weatherID);
+
               module.exports.weatherID = weatherID;
               })
      }) //end request
 
 }; //end function GetWeather
-
+module.exports.weatherEmitter = weatherEmitter;
 module.exports.GetWeather = GetWeather;
