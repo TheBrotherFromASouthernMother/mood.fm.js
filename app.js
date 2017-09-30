@@ -15,10 +15,6 @@ const server = http.createServer((request, response) => {
     module.exports.res = res;
     router.homeRoute(request, response);
 
-    /*  console.log(method);
-      console.log(url);
-      console.log(headers);
-      */
     router.cityRoute(request, response)
 
  });
