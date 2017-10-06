@@ -6,13 +6,13 @@ const app = require('./app.js');
 function homeRoute(request, response) {
   if (request.url === "/") {
     if (request.method === "GET") {
-    render.view("index", response)
-     response.end();
+      render.view("index", response)
+      response.end();
     } else {
-     request.on("data", (postBody) => {
-      let query = queryString.parse(postBody.toString());
-       response.writeHead(303, {"Location":  "/" + query.city});
-       response.end();
+        request.on("data", (postBody) => {
+          let query = queryString.parse(postBody.toString());
+          response.writeHead(303, {"Location":  "/" + query.city});
+          response.end();
      });
    }
   }
@@ -30,14 +30,12 @@ function cityRoute(request, response) {
    //query = queryString.parse(data.toString());
   // console.log(query);
    //response.writeHead(303, {Location:`/${query.city}`});
-   console.log(response._header);
   })
 
   request.on('end', () => {
       cityQuery = cityQuery.toString();
         if (cityQuery.length > 0 ) {
           weather.GetWeather(cityQuery);
-
           weather.weatherEmitter.on('end', () => {
             switch(true) {
               case (weather.weatherID <= 500):
@@ -53,17 +51,18 @@ function cityRoute(request, response) {
               render.view('Rain');
               response.end();
           } //end switch
-          
+
         }) //end Weather.on
         } else {
           console.log('please input a city')
+          //response.end();
           }
+          response.setTimeout(2000, ()=> {
+            response.end();
+          })
 
-    // response.setTimeout(2000, ()=>{
-    //
-    //
-    //     }) //end timeout
-  }) //end requeston on
+          }) //end requeston on
+
 
 } //end cityRoute
 

@@ -11,6 +11,8 @@ const render = require('./render.js');
 
 let weatherID = "10";
 const weatherEmitter = new EventEmitter.EventEmitter();
+
+
 //Main function
 function GetWeather (city = "Houston") {
 

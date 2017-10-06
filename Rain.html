@@ -12,13 +12,14 @@
 
         body {
             background: #ECEEEF;
+            background: linear-gradient(to right, #6AE368, blue);
             text-align: center;
             margin: 100px auto;
             max-width: 462px;
             padding: 0 40px;
             font: 18px normal 'Varela Round', Helvetica, serif;
             color: #777B7E;
-
+    }
 
         img {
             width: 100%;
@@ -45,10 +46,11 @@
             margin: 20px 0 0;
         }
 
-        .button {
+        #buttons {
             border-color: rgba(127, 127, 127, 0.5);
-            background: #6AE368;
+            background-color: #6AE368;
             color: #fff;
+            width: 300px;
         }
 
         #error {
@@ -67,30 +69,13 @@
             border: 1px solid #D5DDE4;
             padding: 40px 0 0;
             margin: 40px 0 0;
-
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 40px 0 0;
-        }
-
-        li {
-            display: inline-block;
-            width: 100%;
-            padding: 22px 0;
-            margin: 0;
-            border-top: 1px solid #D5DDE4;
-        }
-
-        a, a:visited {
-            color: #5FB6E1;
-            text-decoration: none;
-        }
+            }
 
         span {
             color: #2C3238;
         }
+
+
     </style>
 </head>
 
@@ -101,11 +86,9 @@
 
 <div id="profile">
 <iframe src="https://open.spotify.com/embed?uri=spotify:user:mathman2013:playlist:4Bjwfl7txXZOOH552izzKS&view=coverart" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<br>
+<a href="http://localhost:3000"><button id="buttons"> Search Again </button></a>
 
-<form action="/" method="POST">
-    <input type="text" placeholder="Enter a city" id="username" name="city">
-    <input type="submit" value="submit" class="button">
-</form>
 </div>
 
 
