@@ -7,7 +7,8 @@ const page = require('./page.js');
 function homeRoute(request, response) {
   if (request.url === "/") {
     if (request.method === "GET") {
-      render.view("index", response)
+      render.view("index.html", response)
+      render.view('index.css', response);
       response.end();
     } else {
         request.on("data", (postBody) => {
@@ -21,6 +22,21 @@ function homeRoute(request, response) {
 
 function cityRoute(request, response) {
   let cityQuery = "";
+  // if (cityQuery.length > 0) {
+  //   response.statusCode = 200;
+  //   console.log(cityQuery);
+  //
+  //   const WeatherProfile = new GetWeather(cityQuery);
+  //   WeatherProfile.on('end', (data) => {
+  //     page.switchStatement(weather.weatherID, response, render);
+  //   })
+  //
+  // }
+  // response.setTimeout(10000, ()=> {
+  //   response.end();
+  // })
+
+
 
   request.on('data', data => {
    cityQuery += data;
