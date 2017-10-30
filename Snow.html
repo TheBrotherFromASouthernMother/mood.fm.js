@@ -1,28 +1,78 @@
 <!DOCTYPE html>
 <html>
-<style>
+<head>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="index.css">
+<style type="text/css" media="screen">
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
+@import url(http://necolas.github.io/normalize.css/3.0.2/normalize.css);
 
-  <link rel="stylesheet" href="styles.css">
+body {
+    background: #ECEEEF;
+    background: linear-gradient(to right, #6AE368,  #00aced);
+    text-align: center;
+    margin: 100px auto;
+    max-width: 462px;
+    padding: 0 40px;
+    font: 18px normal 'Varela Round', Helvetica, serif;
+    color: #777B7E;
+}
 
+img {
+    width: 100%;
+}
 
+#searchIcon, #avatar {
+    width: 50%;
+    border-radius: 50%;
+    margin: 0 25% 0 25%;
+}
 
+input, button {
+    font-family: 'Varela Round', Helvetica, serif;
+    font-size: 18px;
+    padding: 31px 0;
+    margin: 10px 0;
+    text-align: center;
+    width: 360px;
+    border-radius: 4px;
+    border: 1px solid #D5DDE4;
+    color: #2C3238;
+}
+#username {
+    margin: 20px 0 0;
+}
 
-    /*#responseDiv  {
-      background-color: rgba(155, 155, 155, 0.7);
-      background-blend-mode: exclusion;
-      align-content: center;
-      width: 300;
-      height: auto;
+#buttons {
+    border-color: rgba(127, 127, 127, 0.5);
+    background-color: #6AE368;
+    color: #fff;
+    width: 300px;
+}
 
+#error {
+    width: 100%;
+    padding: 22px 0;
+    background: #FFE6B2;
+    color: #C5A14E;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#responseDiv {
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #D5DDE4;
+    padding: 40px 0 0;
+    margin: 40px 0 0;
     }
-    p {
-      color: 'light blue';
-      font-size: 15;
-      font-style: oblique;
-      font-family: sans-serif;
 
-    }*/
+span {
+    color: #2C3238;
+}
 </style>
+</head>
 <body>
   <div id="respnseDiv">
     <iframe src="https://open.spotify.com/embed?uri=spotify:user:mathman2013:playlist:6gy2p3C6YSdPD0Xc0U9y7s" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>

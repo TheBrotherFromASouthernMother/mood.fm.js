@@ -7,7 +7,6 @@ function switchStatement (weatherConditions, response, render) {
     break;
     case (weatherConditions >= 800):
         console.log('this is problem');
-    render.view('styles.css');
     render.view('Snow.html');
     response.end();
     break;

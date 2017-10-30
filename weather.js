@@ -32,6 +32,7 @@ function GetWeather (city = "Houston") {
             response.on("error", () => {
                         let message = `Error: $[city] could not be found :(`
                         console.error(message);
+                        weather.emit('error', error);
                         })
 
             response.on("end", () => {
