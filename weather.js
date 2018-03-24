@@ -15,12 +15,9 @@ const weatherEmitter = new EventEmitter.EventEmitter();
 
 //Main function
 function GetWeather (city = "Houston") {
-
-
-
   const request = http.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key.apikey}`,(response) => {
-            let body = "";
-            let par = "";
+            let body = null;
+            let parsedData = null;
 
             response.on("data", (data) => {
               body += data;

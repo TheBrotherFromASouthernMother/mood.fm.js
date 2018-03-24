@@ -43,7 +43,7 @@
             color: #2C3238;
         }
 
-        #username {
+        #cityRequest {
             margin: 20px 0 0;
         }
 
@@ -106,11 +106,18 @@
 
 
 <form action="/" method="POST">
-    <input type="text" placeholder="Enter a city" id="username" name="city">
+    <input type="text" placeholder="Enter a city" id="cityRequest" name="city">
     <input type="submit" value="submit" class="button">
 </form>
 </div>
 
-
+  <script type="text/javascript">
+    let form = document.querySelector("form")
+    let cityRequest = document.querySelector("#cityRequest")
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      
+    })
+  </script>
 </body>
 </html>
