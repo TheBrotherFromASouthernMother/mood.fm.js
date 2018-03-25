@@ -2,13 +2,16 @@ const render = require('./render.js');
 const weather = require('./weather.js');
 const queryString = require('querystring');
 const app = require('./app.js');
+const page = require('./page.js');
 
 function homeRoute(request, response) {
   if (request.url === "/") {
     if (request.method === "GET") {
-      render.view("index", response)
+      render.view("index.html", response)
+      render.view('index.css', response);
       response.end();
-    } else {
+    }
+    else {
         request.on("data", (postBody) => {
           let query = queryString.parse(postBody.toString());
           response.writeHead(303, {"Location":  "/" + query.city});
@@ -19,50 +22,43 @@ function homeRoute(request, response) {
 }
 
 function cityRoute(request, response) {
-
   let cityQuery = "";
-  let cities = "";
-  let query = "";
+  // if (cityQuery.length > 0) {
+  //   response.statusCode = 200;
+  //   console.log(cityQuery);
+  //
+  //   const WeatherProfile = new GetWeather(cityQuery);
+  //   WeatherProfile.on('end', (data) => {
+  //     page.switchStatement(weather.weatherID, response, render);
+  //   })
+  //
+  // }
+  // response.setTimeout(10000, ()=> {
+  //   response.end();
+  // })
+
+
+
   request.on('data', data => {
    cityQuery += data;
    console.log(cityQuery);
-   cities = request.url.replace('/', '');
-   //query = queryString.parse(data.toString());
-  // console.log(query);
-   //response.writeHead(303, {Location:`/${query.city}`});
   })
 
   request.on('end', () => {
-      cityQuery = cityQuery.toString();
+      cityQuery = cityQuery.toString().replace("city=", "");
         if (cityQuery.length > 0 ) {
           weather.GetWeather(cityQuery);
           weather.weatherEmitter.on('end', () => {
-            switch(true) {
-              case (weather.weatherID <= 500):
-              console.log(weather.weatherID);
-              render.view('Rain');
-              response.end();
-              break;
-              case (weather.weatherID >= 800):
-              render.view('Snow');
-              response.end();
-              break;
-              default:
-              render.view('Rain');
-              response.end();
-          } //end switch
-
+            page.switchStatement(weather.weatherID, response, render);
         }) //end Weather.on
         } else {
-          console.log('please input a city')
-          //response.end();
+          console.log('please input a city');
           }
           response.setTimeout(2000, ()=> {
             response.end();
           })
 
-          }) //end requeston on
-
+        }) //end request on end
 
 } //end cityRoute
 

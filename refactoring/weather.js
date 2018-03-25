@@ -5,10 +5,6 @@ const http = require('http');
 //hides the api key to prevent security leaks
 const key = require('./api.js')
 
-const app = require('./app.js');
-
-const render = require('./render.js');
-
 const util = require("util");
 
 
@@ -18,12 +14,11 @@ let weatherID = "10";
 
 //Main function
 function GetWeather (city = "Houston") {
-
-  let weatherEmitter = new EventEmitter;
-  module.exports.weatherEmitter = weatherEmitter;
+let weatherEmitter = new EventEmitter;
+module.exports.weatherEmitter = weatherEmitter;
   const request = http.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key.apikey}`,(response) => {
-            let body = null;
-            let parsedData = null;
+            let body = "";
+            let par = "";
 
             response.on("data", (data) => {
               body += data;
@@ -34,20 +29,20 @@ function GetWeather (city = "Houston") {
                         let message = `Error: $[city] could not be found :(`
                         console.error(message);
                         weather.emit('error', error);
+                        return false;
                         })
 
             response.on("end", () => {
                body = body.toString()
                par = JSON.parse(body)
                weatherID = par.weather[0].id;
-               console.log(weatherID);
-               module.exports.weatherID = weatherID;
-               weatherEmitter.emit('end');
-
+              module.exports.weatherID = weatherID;
+              weatherEmitter.emit('end');
               })
      }) //end request
 
 }; //end function GetWeather
+
 
 
 module.exports.GetWeather = GetWeather;
