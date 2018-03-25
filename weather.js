@@ -22,7 +22,7 @@ function GetWeather (city = "Houston") {
   let weatherEmitter = new EventEmitter;
   module.exports.weatherEmitter = weatherEmitter;
   const request = http.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key.apikey}`,(response) => {
-            let body = null;
+            let body = "";
             let parsedData = null;
 
             response.on("data", (data) => {
@@ -40,7 +40,6 @@ function GetWeather (city = "Houston") {
                body = body.toString()
                par = JSON.parse(body)
                weatherID = par.weather[0].id;
-               console.log(weatherID);
                module.exports.weatherID = weatherID;
                weatherEmitter.emit('end');
 
