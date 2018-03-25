@@ -14,11 +14,12 @@ const util = require("util");
 
 let weatherID = "10";
 
-let weatherEmitter = new EventEmitter;
+
 
 //Main function
 function GetWeather (city = "Houston") {
-
+  let weatherEmitter = new EventEmitter;
+  module.exports.weatherEmitter = weatherEmitter;
 
   const request = http.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key.apikey}`,(response) => {
             let body = "";
@@ -39,15 +40,14 @@ function GetWeather (city = "Houston") {
                body = body.toString()
                par = JSON.parse(body)
                weatherID = par.weather[0].id;
-              weatherEmitter.emit('end');
-              console.log(weatherID);
-              module.exports.weatherID = weatherID;
+               console.log(weatherID);
+               module.exports.weatherID = weatherID;
+               weatherEmitter.emit('end');
+
               })
      }) //end request
 
 }; //end function GetWeather
 
 
-module.exports.weatherEmitter = weatherEmitter;
-util.inherits( GetWeather, EventEmitter );
 module.exports.GetWeather = GetWeather;

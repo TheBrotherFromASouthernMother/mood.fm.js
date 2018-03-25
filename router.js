@@ -10,7 +10,8 @@ function homeRoute(request, response) {
       render.view("index.html", response)
       render.view('index.css', response);
       response.end();
-    } else {
+    }
+    else {
         request.on("data", (postBody) => {
           let query = queryString.parse(postBody.toString());
           response.writeHead(303, {"Location":  "/" + query.city});
@@ -44,7 +45,7 @@ function cityRoute(request, response) {
   })
 
   request.on('end', () => {
-      cityQuery = cityQuery.toString();
+      cityQuery = cityQuery.toString().replace("city=", "");
         if (cityQuery.length > 0 ) {
           weather.GetWeather(cityQuery);
           weather.weatherEmitter.on('end', () => {

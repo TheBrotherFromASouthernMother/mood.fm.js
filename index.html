@@ -29,12 +29,31 @@
 
 
   <form action="/" method="POST">
-  <input type="text" placeholder="Enter a city" id="username" name="city">
+  <input type="text" placeholder="Enter a city" id="cityRequestBox" name="city">
   <input type="submit" value="submit" class="button">
   </form>
   </div>
 
-
+<script type="text/javascript">
+  // let submitButton = document.querySelector("#submitButton");
+  // let profile = document.querySelector("#profile")
+  // let body = document.querySelector("body")
+  //
+  //
+  // submitButton.addEventListener("submit", (e) => {
+  //   e.preventDefault();
+  //   let cityRequest = document.querySelector("#cityRequestBox").value;
+  //   console.log(cityRequest)
+  //   let xhr = new XMLHttpRequest()
+  //   xhr.onreadystatechange = () => {
+  //     if (xhr.readyState === 4) {
+  //       body.innerHTML = xhr.responseText;
+  //     }
+  //   }
+  //
+  //   xhr.open('POST', `/:${cityRequest}`)
+  // })
+</script>
 
 
 <script>
@@ -60,10 +79,6 @@
             }
 
 }, 400)
-
-
-
-
 </script>
 </body>
 </html>
