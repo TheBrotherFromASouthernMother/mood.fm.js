@@ -1,6 +1,6 @@
 h1 {
-  font-size: 80px;
-  font-weight:800;
+
+  /* font-weight:800; */
   display: block;
 }
 
@@ -8,6 +8,7 @@ h1 {
   z-index: 5;
   color: rgba(255, 255, 255, 0.7);
   font-family: Helvetica, Arial;
+  font-size: 40px;
 }
 
 body {

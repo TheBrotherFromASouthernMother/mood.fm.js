@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Treehouse Profile</title>
+    <title> Mood.fm</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type= "text/css" rel="stylesheet" href="/css/index.css">
     <style type="text/css" media="screen">
@@ -24,7 +24,6 @@
 
     <div class="title">
         <h1> <%= greeting %> </h1>
-        <h3> <%= instructions %> </h3>
     </div>
     <div id="profile">
     <img src="http://i.imgur.com/PUpYU7p.png" alt="Magnifying Glass" id="searchIcon">
@@ -40,6 +39,7 @@
     let submitButton = document.querySelector("#submitButton");
     let profile = document.querySelector("#profile")
     let cityRequest = null;
+    let title = document.querySelector('.title')
 
 
     submitButton.addEventListener("click", (e) => {
