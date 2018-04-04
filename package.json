@@ -1,0 +1,24 @@
+{
+  "name": "mood.fm",
+  "version": "1.0.0",
+  "description": "A web application that creates a playlist of music based on the weather in your city",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheBrotherFromASouthernMother/mood.fm.js.git"
+  },
+  "author": "Christian Lowe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheBrotherFromASouthernMother/mood.fm.js/issues"
+  },
+  "homepage": "https://github.com/TheBrotherFromASouthernMother/mood.fm.js#readme",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.2"
+  }
+}
