@@ -18,20 +18,22 @@
 
 <body>
     <div id="backDiv">
-    <div id="middleDiv">
-
+      <div id="middleDiv">
+      </div>
     </div>
+
+    <div class="title">
+        <h1> <%= greeting %> </h1>
+        <h3> <%= instructions %> </h3>
     </div>
-    <h1>Welcome to Mood.fm</h1>
-
-  <div id="profile">
-  <img src="http://i.imgur.com/PUpYU7p.png" alt="Magnifying Glass" id="searchIcon">
+    <div id="profile">
+    <img src="http://i.imgur.com/PUpYU7p.png" alt="Magnifying Glass" id="searchIcon">
 
 
-  <form action="/" method="">
-  <input type="text" placeholder="Enter a city" id="cityRequestBox" name="city">
-  <input type="submit" value="submit" class="button" id="submitButton">
-  </form>
+    <form action="/" method="">
+    <input type="text" placeholder="Enter a city" id="cityRequestBox" name="city">
+    <input type="submit" value="submit" class="button" id="submitButton">
+    </form>
   </div>
 
   <script type="text/javascript">
@@ -39,11 +41,11 @@
     let profile = document.querySelector("#profile")
     let cityRequest = null;
 
+
     submitButton.addEventListener("click", (e) => {
       e.preventDefault();
       cityRequest = document.querySelector("#cityRequestBox").value;
       console.log(cityRequest)
-
       let xhr = new XMLHttpRequest()
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
@@ -54,38 +56,31 @@
           })
         }
       }
-
       xhr.open('POST', `/:${cityRequest}`)
       xhr.send();
-
     })
-
 
   </script>
 
-<script>
-    const backDiv = document.getElementById('backDiv');
-    const middleDiv = document.getElementById('middleDiv');
-    let x = 1;
-    let y = 0;
-    let p = 0;
-    setInterval(function () {
-
-            if (x > 0) {
-                x -= 0.03;
-                middleDiv.style.opacity = x;
-            } else if (0 >= x) {
-                console.log(y);
-                y += 0.03;
-                middleDiv.style.opacity = y;
-                if (y >= 1) {
-                    x = 1;
-                    middleDiv.style.opacity = x;
-                    y = 0;
-                }
-            }
-
-}, 400)
-</script>
+  <script>
+      const backDiv = document.getElementById('backDiv');
+      const middleDiv = document.getElementById('middleDiv');
+      let x = 1;
+      let y = 0;
+      setInterval(function () {
+              if (x > 0) {
+                  x -= 0.03;
+                  middleDiv.style.opacity = x;
+              } else if (0 >= x) {
+                  y += 0.03;
+                  middleDiv.style.opacity = y;
+                  if (y >= 1) {
+                      x = 1;
+                      middleDiv.style.opacity = x;
+                      y = 0;
+                  }
+              }
+            }, 400)
+  </script>
 </body>
 </html>

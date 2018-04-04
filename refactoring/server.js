@@ -11,7 +11,11 @@ app.set("views", "./views")
 app.use(express.static(__dirname + '/public'));
 
 app.get("/", (req, res, next) => {
-  res.render('index')
+  res.render('index',{
+    greeting: 'Welcome to Mood.fm',
+    instructions: 'Enter your city below',
+    weatherData: ""
+  } )
   return next();
 })
 
@@ -20,7 +24,6 @@ count = 0
 app.post("/:city", (req, res, next) => {
   let cityQuery = req.params.city.toString().slice(1);
   weatherRequest.GetWeather(cityQuery);
-  console.log("Headers sent?1 ", res.headersSent)
   weatherRequest.weatherEmitter.on('end', () => {
     res.render("rain")
     console.log("Headers sent?2 ", res.headersSent);
